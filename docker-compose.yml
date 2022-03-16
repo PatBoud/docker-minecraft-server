@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  mc:
+    image: itzg/minecraft-server
+    container_name: mcjava
+    ports:
+      # JAVA
+      - 25565:25565/tcp
+
+      #Console Rcon
+      - 25575:25575/tcp
+
+      # Plugin - Geyser (Pour clients Bedrock)
+      - 19132:19132/udp
+
+      # Plugin - Dynmap
+      - 17143:17143/tcp
+
+    environment:
+      TZ: America/Montreal
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      VERSION: "1.18.2"
+      MEMORY: "6G"
+      USE_AIKAR_FLAGS: "TRUE"
+      OVERRIDE_SERVER_PROPERTIES: "TRUE"
+      SEED: "1234567812345678"
+      LEVEL_TYPE: "default"
+      MODE: "survival"
+      DIFFICULTY: "easy"
+      PVP: "true"
+      LEVEL: "world"
+      MOTD: "Minecraft Server"
+      MAX_PLAYERS: 25
+      FORCE_GAMEMODE: "TRUE"
+      SNOOPER_ENABLED: "FALSE"
+      VIEW_DISTANCE: 16
+      SIMULATION_DISTANCE: 10
+      ENABLE_WHITELIST: "FALSE"
+      SPAWN_PROTECTION: 0
+      ALLOW_FLIGHT: "TRUE"
+      ENABLE_COMMAND_BLOCK: "TRUE"
+      EXEC_DIRECTLY: "TRUE"
+
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
