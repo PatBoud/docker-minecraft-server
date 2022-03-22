@@ -7,4 +7,4 @@ echo "Arrêt..."
 docker exec mcjava rcon-cli stop
 
 echo "Suppression du conteneur..."
-docker-compose -f /docker/mcjava/docker-compose.yml down
+docker-compose down
